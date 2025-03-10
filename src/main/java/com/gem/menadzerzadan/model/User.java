@@ -1,12 +1,10 @@
 package com.gem.menadzerzadan.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 //JPA, HIBERNATE
 @Entity
+@Table(name = "users")
 public class User //user
 {
     @Id
