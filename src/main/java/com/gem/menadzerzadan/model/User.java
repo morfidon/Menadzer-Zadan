@@ -1,8 +1,18 @@
 package com.gem.menadzerzadan.model;
 
-public class User
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+//JPA, HIBERNATE
+@Entity
+public class User //user
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //IDentyfikator - UNIKALNIE
+
     private String username;
     private String password;
     private String email;
