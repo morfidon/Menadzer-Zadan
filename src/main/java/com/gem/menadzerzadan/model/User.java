@@ -1,19 +1,30 @@
 package com.gem.menadzerzadan.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 //JPA, HIBERNATE
 @Entity
 @Table(name = "users")
-public class User //user
+public class User implements UserDetails//user
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //IDentyfikator - UNIKALNIE
 
+
+
     private String username;
     private String password;
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public User() {
     }
@@ -24,6 +35,7 @@ public class User //user
         this.password = password;
         this.email = email;
     }
+
 
     public int getId() {
         return id;
@@ -39,6 +51,12 @@ public class User //user
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+        //ROLA/POZWOLENIE
     }
 
     public String getPassword() {
@@ -60,4 +78,10 @@ public class User //user
     // SQL - CREATE TABLE nazwa_tabeli
     // HIBERNATE
     // MVC - Model View Controller -
+}
+
+enum Role
+{
+    USER,
+    ADMIN
 }
