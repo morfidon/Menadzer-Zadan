@@ -18,7 +18,7 @@ public class User implements UserDetails//user
     private int id; //IDentyfikator - UNIKALNIE
 
 
-
+    @Column(unique = true)
     private String username;
     private String password;
     private String email;
