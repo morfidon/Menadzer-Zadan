@@ -1,33 +1,31 @@
 package com.gem.menadzerzadan.controller;
 
 import com.gem.menadzerzadan.model.User;
-import com.gem.menadzerzadan.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gem.menadzerzadan.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController // REQUEST - zadania - odbieram zadania
+{
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository)
-    {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
-    public List<User> getUsers()
-    {
-        return userRepository.findAll();
+    public List<User> getUsers() {
+        return userService.getUsers();
     }
+
     @PostMapping
-    public User addUser(@RequestBody User user)
-    {
-        return userRepository.save(user);
+    public User addUser(@RequestBody User user) {
+
+        return userService.addUser(user);
     }
 }
 //GET Request
