@@ -36,6 +36,12 @@ public class User implements UserDetails//user
         this.email = email;
     }
 
+    public User(String username, String password, String email, Role role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
@@ -80,8 +86,3 @@ public class User implements UserDetails//user
     // MVC - Model View Controller -
 }
 
-enum Role
-{
-    USER,
-    ADMIN
-}
