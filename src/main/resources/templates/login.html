@@ -27,6 +27,9 @@
     <div th:if="${param.error}" class="error-message">
         Niepoprawny login lub hasło - spróbuj ponownie.
     </div>
+    <div th:if="${param.logout}" class="error-message">
+        Wylogowano poprawnie.
+    </div>
 </div>
 </body>
 </html>
